@@ -1,0 +1,29 @@
+.card 
+{
+height: 100%;
+/* width: 100%; */
+}
+.card img 
+{
+    max-width: 100%;
+    height: auto;
+
+}
+.icon-fleche
+{
+    height: 55px;
+    width: 55px;
+}
+
+#scrollUp
+{
+position: fixed;
+/* bottom : 0px;
+right: 0px; */
+opacity: 0.5;
+}
+/* .carousel-inner img
+{
+height:100px; 
+width: auto;
+} */
