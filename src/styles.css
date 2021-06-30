@@ -1,13 +1,33 @@
+
+.navbar
+{
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+}
+.carousel
+{
+    position: relative;
+    z-index: 1;
+}
+main 
+{
+    z-index: 1;
+}
 .card 
 {
 height: 100%;
-/* width: 100%; */
+
 }
 .card img 
 {
     max-width: 100%;
     height: auto;
 
+}
+.card-body
+{
+    background-color: black;
 }
 .icon-fleche
 {
@@ -18,12 +38,22 @@ height: 100%;
 #scrollUp
 {
 position: fixed;
-/* bottom : 0px;
-right: 0px; */
+bottom : 10px;
+right: -100px;
 opacity: 0.5;
 }
-/* .carousel-inner img
+footer{
+    background-image: url("img/Capture\ 12.PNG");
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.9;
+    /* font-family: copper black;
+    font-weight: 400; */
+}
+#citation
 {
-height:100px; 
-width: auto;
-} */
+    font-family: copper black;
+    font-weight: 400;
+    /* font-weight: bold; */
+    color: black;
+}
