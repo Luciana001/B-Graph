@@ -23,4 +23,4 @@ Prochaines étapes:
 
 [jetez-y un oeil](https://luciana001.github.io/B-Graph/)
 
-Deployer avec Heroku
+Deployer avec Heroku https://b-graph.herokuapp.com/
