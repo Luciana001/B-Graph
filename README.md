@@ -21,4 +21,6 @@ Prochaines étapes:
 - Construire un MVC
 - Coder un modal au click d'une photo
 
-[jetez-y un oeil]()
+[jetez-y un oeil](https://luciana001.github.io/B-Graph/)
+
+Deployer avec Heroku
