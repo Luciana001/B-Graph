@@ -35,7 +35,7 @@
                         <span class="navbar-toggler-icon "></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <ul class="navbar-nav me-auto mb-lg-0">
                             <li class="nav-item">
                                 <button class="nav-link active btn btn-transparent text-white" aria-current="page" name="a-propos" type="submit">A propos</button>
                             </li>
@@ -78,7 +78,7 @@
                 <section class="container-fluid py-5 bg-dark text-light">
                     <div class="row justify-content-center">
                         <form class="col-10 col-md-8 col-lg-6 py-5 " method="POST" action="#">
-                            <div>
+                            <div class="py-5">
                                 <h1 class="fw-lighter fst-italic">Contactez-moi ...</h1>
                             </div>
                             <div class="d-md-flex py-3">
@@ -92,10 +92,16 @@
                                 </div>
                             </div>
                             <div class="col-12 py-0">
+                            <div class="mx-1 d-inline">
+                                    <label for="mail">Mail: </label>
+                                    <input type="text" class="form-control" id="mail" placeholder="dupont@example.com">
+                            </div>
+                            <div>
                                 <label for="textarea">Votre message: </label>
                                 <textarea class="form-control" id="textarea" rows="5"></textarea>
                             </div>
-                            <div class="py-3 text-center">
+                            </div>
+                            <div class="py-4 mt-3 text-center">
                                 <button type="submit" class="btn btn-info">Envoyer</button>
                             </div>
                         </form>
@@ -109,7 +115,7 @@
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
-                <div class="carousel-inner ">
+                <div class="carousel-inner">
                     <div class="carousel-item active ">
                         <img src="img/amoureux 2.png" class="d-block w-100" alt="amoureux">
                     </div>
@@ -135,7 +141,7 @@
                         <div class="col">
                             <div class="card text-white mb-3">
                                 <img src="img/projet-formation-gif-5-fini.gif" class="card-img-top" alt="gif">
-                                <div class="card-body">
+                                <div class="card-body description">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                 </div>
@@ -144,7 +150,7 @@
                         <div class="col">
                             <div class="card text-white  mb-3">
                                 <img src="img/cv-1 (2).png" class="card-img-top" alt="cv1">
-                                <div class="card-body">
+                                <div class="card-body description">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                 </div>
@@ -153,7 +159,7 @@
                         <div class="col">
                             <div class="card text-white  mb-3">
                                 <img src="img/logo2paranoiark-2.jpg" class="card-img-top" alt="logo">
-                                <div class="card-body">
+                                <div class="card-body description">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                 </div>
@@ -162,7 +168,7 @@
                         <div class="col">
                             <div class="card text-white  mb-3">
                                 <img src="img/logo amed.jpg" class="card-img-top" alt="amed">
-                                <div class="card-body">
+                                <div class="card-body description">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
                                 </div>
@@ -171,7 +177,7 @@
                         <div class="col">
                             <div class="card text-white  mb-3">
                                 <img src="img/cv 2 perso.gif" class="card-img-top" alt="cv-2">
-                                <div class="card-body">
+                                <div class="card-body description">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                 </div>
@@ -180,7 +186,7 @@
                         <div class="col">
                             <div class="card text-white  mb-3">
                                 <img src="img/Capture 9.PNG" class="card-img-top" alt="corbeau">
-                                <div class="card-body">
+                                <div class="card-body description">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                 </div>
@@ -189,7 +195,7 @@
                         <div class="col">
                             <div class="card text-white  mb-3">
                                 <img src="img/Capture 8.PNG" class="card-img-top" alt="mort">
-                                <div class="card-body">
+                                <div class="card-body description">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
                                 </div>
@@ -198,7 +204,7 @@
                         <div class="col">
                             <div class="card text-white  mb-3">
                                 <img src="img/Capture 7.PNG" class="card-img-top" alt="woman-free">
-                                <div class="card-body">
+                                <div class="card-body description">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                 </div>
@@ -207,7 +213,7 @@
                         <div class="col">
                             <div class="card text-white  mb-3">
                                 <img src="img/Capture 6.PNG" class="card-img-top" alt="forest">
-                                <div class="card-body">
+                                <div class="card-body description">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                 </div>
@@ -216,7 +222,7 @@
                         <div class="col">
                             <div class="card text-white  mb-3">
                                 <img src="img/Capture 4.PNG" class="card-img-top" alt="fillette">
-                                <div class="card-body">
+                                <div class="card-body description">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                 </div>
@@ -225,7 +231,7 @@
                         <div class="col">
                             <div class="card text-white  mb-3">
                                 <img src="img/Capture 21.PNG" class="card-img-top" alt="main">
-                                <div class="card-body">
+                                <div class="card-body description">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                 </div>
@@ -234,7 +240,7 @@
                         <div class="col">
                             <div class="card text-white  mb-3">
                                 <img src="img/Capture 20.PNG" class="card-img-top" alt="eglise">
-                                <div class="card-body">
+                                <div class="card-body description">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                 </div>
@@ -243,7 +249,7 @@
                         <div class="col">
                             <div class="card text-white  mb-3">
                                 <img src="img/Capture 2.PNG" class="card-img-top" alt="logo-smart">
-                                <div class="card-body">
+                                <div class="card-body description">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                 </div>
@@ -252,7 +258,7 @@
                         <div class="col">
                             <div class="card text-white  mb-3">
                                 <img src="img/Capture 19.PNG" class="card-img-top" alt="femme-ruelle">
-                                <div class="card-body">
+                                <div class="card-body description">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                 </div>
@@ -261,7 +267,7 @@
                         <div class="col">
                             <div class="card text-white  mb-3">
                                 <img src="img/Capture 17.PNG" class="card-img-top" alt="etiquette-recto">
-                                <div class="card-body">
+                                <div class="card-body description">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                 </div>
@@ -270,7 +276,7 @@
                         <div class="col">
                             <div class="card text-white  mb-3">
                                 <img src="img/Capture 18.PNG" class="card-img-top" alt="etiquette-verso">
-                                <div class="card-body">
+                                <div class="card-body description">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                 </div>
@@ -279,7 +285,7 @@
                         <div class="col">
                             <div class="card text-white  mb-3">
                                 <img src="img/Capture 16.PNG" class="card-img-top" alt="femme-crepuscule">
-                                <div class="card-body">
+                                <div class="card-body description">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                 </div>
@@ -288,7 +294,7 @@
                         <div class="col">
                             <div class="card text-white  mb-3">
                                 <img src="img/Capture 15.PNG" class="card-img-top" alt="chat">
-                                <div class="card-body">
+                                <div class="card-body description">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                 </div>
@@ -297,7 +303,7 @@
                         <div class="col">
                             <div class="card text-white  mb-3">
                                 <img src="img/Capture 14.PNG" class="card-img-top" alt="couloir-penombre">
-                                <div class="card-body">
+                                <div class="card-body description">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                 </div>
@@ -306,7 +312,7 @@
                         <div class="col">
                             <div class="card text-white  mb-3">
                                 <img src="img/Capture 13.PNG" class="card-img-top" alt="femme-hache">
-                                <div class="card-body">
+                                <div class="card-body description">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                 </div>
@@ -315,7 +321,7 @@
                         <div class="col">
                             <div class="card text-white  mb-3">
                                 <img src="img/Capture 12.PNG" class="card-img-top" alt="apocalypse">
-                                <div class="card-body">
+                                <div class="card-body description">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                 </div>
@@ -324,7 +330,7 @@
                         <div class="col">
                             <div class="card text-white  mb-3">
                                 <img src="img/Capture 11.PNG" class="card-img-top" alt="batman">
-                                <div class="card-body">
+                                <div class="card-body description">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                 </div>
@@ -333,7 +339,7 @@
                         <div class="col">
                             <div class="card text-white  mb-3">
                                 <img src="img/Capture 10.PNG" class="card-img-top" alt="tete-de-mort">
-                                <div class="card-body">
+                                <div class="card-body description">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                                 </div>

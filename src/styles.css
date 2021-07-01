@@ -1,19 +1,29 @@
-
+/* ================= Page entière ================= */
+/* html{
+    min-height: 100vh;
+} */
+body{
+    margin: 0;
+    min-height: 100vh;
+}
+main 
+{
+    z-index: 1;
+}
+/* ================= Navbar ================= */
 .navbar
 {
     width: 100%;
     position: absolute;
     z-index: 2;
 }
+/* ================= Carousel ================= */
 .carousel
 {
     position: relative;
     z-index: 1;
 }
-main 
-{
-    z-index: 1;
-}
+/* ================= Card ================= */
 .card 
 {
 height: 100%;
@@ -25,10 +35,11 @@ height: 100%;
     height: auto;
 
 }
-.card-body
+.description
 {
     background-color: black;
 }
+/* ================= btn haut de page ================= */
 .icon-fleche
 {
     height: 55px;
@@ -42,18 +53,16 @@ bottom : 10px;
 right: -100px;
 opacity: 0.5;
 }
+/* ================= Footer ================= */
 footer{
     background-image: url("img/Capture\ 12.PNG");
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 0.9;
-    /* font-family: copper black;
-    font-weight: 400; */
 }
 #citation
 {
     font-family: copper black;
     font-weight: 400;
-    /* font-weight: bold; */
     color: black;
 }
