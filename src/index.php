@@ -53,7 +53,7 @@
         </form>
     </header>
     <main>
-        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+        <div id="carouselExampleFade" class="carousel slide carousel-fade " height="50px" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -61,13 +61,13 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active ">
-                    <img src="img/amoureux 2.png" class="d-block w-100" alt="amoureux">
+                    <img src="img/amoureux 2.png" class="d-block img-fluid img-carousel" alt="amoureux">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/Capture 4.PNG" class="d-block w-100" alt="fillette">
+                    <img src="img/Capture 4.PNG" class="d-block w-100 img-fluid img-carousel" alt="fillette">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/bébé.jpg" class="d-block w-100" alt="bebe">
+                    <img src="img/bébé.jpg" class="d-block img-fluid img-carousel" alt="bebe">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
@@ -92,238 +92,49 @@
                 } elseif (isset($_GET["connecter"])) {
                     sendProject();
                 } else { ?>
-                    <div class="row row-cols-1 row-cols-md-2 g-4">
-                        <div class="col">
-                            <div class="card text-white mb-3">
-                                <img src="img/projet-formation-gif-5-fini.gif" class="card-img-top" alt="gif">
-                                <div class="card-body description">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target=".bd-example-modal-lg">
-                                    voir mieux
-                                </button>
-
-                                <!-- Modal -->
-                                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <img src="img/projet-formation-gif-5-fini.gif" alt="gif">
+                    <div class="col-10 offset-1 py-5">
+                        <div class="row row-cols-1 row-cols-md-2 g-4">
+                            <?php
+                            include("connectBdd.php");
+                            $rows = display();
+                            foreach ($rows  as $key => $row) {
+                                $row['img_blob'] = base64_decode($row['img_blob']) ?>
+                                <div class="col">
+                                    <div class="card text-white mb-3" id="card">
+                                        <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img_blob']); ?>" class="card-img-top" alt="gif">
+                                        <div class="card-body description">
+                                            <h5 class="card-title  col-10 offset-1"><?php echo $row['img_titre']; ?></h5>
+                                            <p class="card-text col-10 offset-1"><?php echo $row['img_desc']; ?></p>
+                                            
+                                        </div>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn " id="btn-modal" data-toggle="modal" data-target="#message<?php echo $row['img_id']; ?>">Voir mieux ...</button>
+                                        <!-- Modal -->
+                                        <div id="message<?php echo $row['img_id']; ?>" class="modal fade" role="dialog">
+                                            <div class="modal-dialog modal-xl">
+                                                <!-- Modal content-->
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title text-dark"><?php echo $row['img_titre']; ?></h4>
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p class="text-dark"><?php echo $row['img_desc']; ?></p>
+                                                        <?php echo $row['img_id']; ?>
+                                                        <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img_blob']); ?>" class="card-img-top" alt="gif">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Modifier</button>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Delete</button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card text-white  mb-3">
-                                <img src="img/cv-1 (2).png" class="card-img-top" alt="cv1">
-                                <div class="card-body description">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card text-white  mb-3">
-                                <img src="img/logo2paranoiark-2.jpg" class="card-img-top" alt="logo">
-                                <div class="card-body description">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card text-white  mb-3">
-                                <img src="img/logo amed.jpg" class="card-img-top" alt="amed">
-                                <div class="card-body description">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card text-white  mb-3">
-                                <img src="img/cv 2 perso.gif" class="card-img-top" alt="cv-2">
-                                <div class="card-body description">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card text-white  mb-3">
-                                <img src="img/Capture 9.PNG" class="card-img-top" alt="corbeau">
-                                <div class="card-body description">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card text-white  mb-3">
-                                <img src="img/Capture 8.PNG" class="card-img-top" alt="mort">
-                                <div class="card-body description">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card text-white  mb-3">
-                                <img src="img/Capture 7.PNG" class="card-img-top" alt="woman-free">
-                                <div class="card-body description">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card text-white  mb-3">
-                                <img src="img/Capture 6.PNG" class="card-img-top" alt="forest">
-                                <div class="card-body description">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card text-white  mb-3">
-                                <img src="img/Capture 4.PNG" class="card-img-top" alt="fillette">
-                                <div class="card-body description">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card text-white  mb-3">
-                                <img src="img/Capture 21.PNG" class="card-img-top" alt="main">
-                                <div class="card-body description">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card text-white  mb-3">
-                                <img src="img/Capture 20.PNG" class="card-img-top" alt="eglise">
-                                <div class="card-body description">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card text-white  mb-3">
-                                <img src="img/Capture 2.PNG" class="card-img-top" alt="logo-smart">
-                                <div class="card-body description">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card text-white  mb-3">
-                                <img src="img/Capture 19.PNG" class="card-img-top" alt="femme-ruelle">
-                                <div class="card-body description">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card text-white  mb-3">
-                                <img src="img/Capture 17.PNG" class="card-img-top" alt="etiquette-recto">
-                                <div class="card-body description">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card text-white  mb-3">
-                                <img src="img/Capture 18.PNG" class="card-img-top" alt="etiquette-verso">
-                                <div class="card-body description">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card text-white  mb-3">
-                                <img src="img/Capture 16.PNG" class="card-img-top" alt="femme-crepuscule">
-                                <div class="card-body description">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card text-white  mb-3">
-                                <img src="img/Capture 15.PNG" class="card-img-top" alt="chat">
-                                <div class="card-body description">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card text-white  mb-3">
-                                <img src="img/Capture 14.PNG" class="card-img-top" alt="couloir-penombre">
-                                <div class="card-body description">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card text-white  mb-3">
-                                <img src="img/Capture 13.PNG" class="card-img-top" alt="femme-hache">
-                                <div class="card-body description">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card text-white  mb-3">
-                                <img src="img/Capture 12.PNG" class="card-img-top" alt="apocalypse">
-                                <div class="card-body description">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card text-white  mb-3">
-                                <img src="img/Capture 11.PNG" class="card-img-top" alt="batman">
-                                <div class="card-body description">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card text-white  mb-3">
-                                <img src="img/Capture 10.PNG" class="card-img-top" alt="tete-de-mort">
-                                <div class="card-body description">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
+                            <?php  } ?>
                         </div>
                     </div>
-
                 <?php };
                 if (isset($_FILES['image'])) {
                     include('connectBdd.php');
@@ -331,10 +142,10 @@
                 } ?>
             </section>
         </article>
+        <div id="scrollUp">
+            <a href="#top"><img src="img/fleche_haut-.png" class="icon-fleche" /></a>
+        </div>
     </main>
-    <div id="scrollUp">
-        <a href="#top"><img src="img/fleche_haut-.png" class="icon-fleche" /></a>
-    </div>
     <footer>
         <div class="container-fluid  text-center py-5" id="citation">
             <figure class="text-center">

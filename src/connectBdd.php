@@ -56,40 +56,19 @@
     {
         $pdo = connectBdd();
         $req = " ";
-        //header("Content-type: image/jpg");
         $req = $pdo->query("SELECT * FROM images");
-        //while($rows = mysql_fetch_array($req)){
         $req -> execute();
         $rows = $req->fetchAll(PDO::FETCH_ASSOC);
         
-        foreach($rows as $row){
-            $row['img_blob'] = base64_decode($row['img_blob']);
-            echo $row['img_titre'];
-            echo '<br/>';
-            echo '<img src="data:image/jpeg;base64,'.base64_encode( $row['img_blob'] ).'"/>';
-        }
-        //     //header("Content-type: ".$row[2]);
-        //     //echo $row[3] ;
+        // foreach($rows as $row){
+        //     $row['img_blob'] = base64_decode($row['img_blob']);
+        //     echo $row['img_titre'];
+        //     echo '<br/>';
+        //     echo $row['img_desc'];
+        //     echo '<br/>';
+        //     echo '<img src="data:image/jpeg;base64,'.base64_encode( $row['img_blob'] ).'"/>';
         // }
-
-        //header("Content-type: image/jpg"); 
-        //var_dump($rows);
         $pdo = NULL;
+        return $rows;
     }
-    function update ()
-    {
-        $pdo = connectBdd();
-        $req = " ";
-        $req = $pdo->prepare("SELECT img_blob FROM images");
-        $req -> execute();
-        $rows = $req->fetchAll(PDO::FETCH_ASSOC);
-        foreach($rows as  $row){
-            //$row['img_blob'] = base64_decode($row['img_blob']);
-            $req = $pdo->prepare("UPDATE images SET img_blob = :img_blob");
-            $req -> bindValue(':img_blob', base64_encode($row['img_blob']));
-            $req -> execute();
-    }
-        };
-        
-
     ?>
