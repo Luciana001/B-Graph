@@ -1,13 +1,13 @@
-<?php 
+<?php
     function connectBdd() {
         try {
             $pdo = new PDO("mysql:host=mysql;dbname=B-Graph", "root", "root");
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            //showAlert();
         } catch (PDOException $e) {
             echo $e->getMessage();
         }return $pdo;
     };
- 
     function insert(){
         $ret        = false;
         $img_blob   = '';
@@ -52,23 +52,45 @@
         $req->execute();
         $pdo = NULL;
     }
-    function display ()
+    function displayCard()
     {
         $pdo = connectBdd();
         $req = " ";
-        $req = $pdo->query("SELECT * FROM images");
+        $req = $pdo -> query("SELECT * FROM images ORDER BY img_id DESC");
         $req -> execute();
-        $rows = $req->fetchAll(PDO::FETCH_ASSOC);
-        
-        // foreach($rows as $row){
-        //     $row['img_blob'] = base64_decode($row['img_blob']);
-        //     echo $row['img_titre'];
-        //     echo '<br/>';
-        //     echo $row['img_desc'];
-        //     echo '<br/>';
-        //     echo '<img src="data:image/jpeg;base64,'.base64_encode( $row['img_blob'] ).'"/>';
-        // }
+        $rows = $req -> fetchAll(PDO::FETCH_ASSOC);
         $pdo = NULL;
         return $rows;
+    }
+    function requestGetOne($id)
+    {
+        $pdo = connectBdd();
+        $req = " ";
+        $req = $pdo -> query("SELECT img_titre,img_desc FROM images WHERE img_id = $id");
+        $req -> execute();
+        $row = $req -> fetchAll(PDO::FETCH_ASSOC);
+        $pdo = NULL;
+        return $row;
+    }
+    function delete($id)
+    {
+        $pdo = connectBdd();
+        $req = " ";
+        $req = $pdo -> query("DELETE  FROM images WHERE img_id = $id");
+        $req -> execute();
+        $req -> fetchAll(PDO::FETCH_ASSOC);
+        $pdo = NULL;
+    }
+    function modify($id,$titre,$description)
+    {
+        $pdo = connectBdd();
+        $req = " ";
+        $req = $pdo -> prepare("UPDATE images SET img_titre = :titre, img_desc = :desc WHERE img_id = :id");
+        $req -> bindValue(':titre', $titre);
+        $req -> bindValue(':id', $id);
+        $req -> bindValue(':desc', $description);
+        $req -> execute();
+        //$req -> fetchAll(PDO::FETCH_ASSOC);
+        $pdo = NULL;
     }
     ?>

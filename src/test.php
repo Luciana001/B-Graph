@@ -24,7 +24,7 @@
             <div class="row">
                 <?php 
                 include("connectBdd.php");
-                display();
+                displayCard();
                 ?>
             </div>
             <button type="button" class="btn" name="btn-modal" value="<?php $row['img_id']; ?>" id=" btn-modal" data-toggle="modal" data-target=".bd-example-modal-lg">

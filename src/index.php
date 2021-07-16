@@ -1,4 +1,7 @@
-<?php require 'display.php'; ?>
+<?php 
+require 'display.php'; 
+require 'request.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +25,19 @@
                 });
             });
         });
+        function showAlert() {
+            alert("Modification réussie");
+        }
+        function showAlertDelete() {
+            var result = confirm("Etes-vous sûre de vouloir faire ceci?");
+            if(result) {
+                alert('Suppression enregistrée');
+            }else {
+                alert('Bye bye!');
+            }
+        }
     </script>
+    
     <title>B-Graph</title>
 </head>
 
@@ -30,7 +45,7 @@
     <header>
         <form action="index.php" method="GET">
             <nav class="navbar transparent navbar-dark navbar-expand-md  ">
-                <div class="container-fluid">
+                <!-- <div class="container-fluid"> -->
                     <button class="navbar-brand btn btn-transparent text-white" name="blog" type="submit">Blog</button>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon "></span>
@@ -38,22 +53,22 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-lg-0">
                             <li class="nav-item">
-                                <button class="nav-link active btn btn-transparent text-white" aria-current="page" name="a-propos" type="submit">A propos</button>
+                                <a class="nav-link active btn btn-transparent text-white" aria-current="page" name="a-propos" href="#">A propos</a>
                             </li>
                             <li class="nav-item">
-                                <button class="nav-link active btn btn-transparent text-white" aria-current="page" name="contact" type="submit">Contact</button>
+                                <a class="nav-link active btn btn-transparent text-white" aria-current="page" name="contact" href="#">Contact</a>
                             </li>
                             <li class="nav-item">
-                                <button class="nav-link active btn btn-transparent text-white" aria-current="page" name="login" type="submit">Log In</button>
+                                <a class="nav-link active btn btn-transparent text-white" aria-current="page" name="login" href="#">Log In</a>
                             </li>
                         </ul>
                     </div>
-                </div>
+                <!-- </div> -->
             </nav>
         </form>
     </header>
     <main>
-        <div id="carouselExampleFade" class="carousel slide carousel-fade " height="50px" data-ride="carousel">
+        <div id="carouselExampleFade" class="carousel slide carousel-fade " data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -79,67 +94,42 @@
                 <span class="sr-only"></span>
             </a>
         </div>
-
         <article>
             <section class="container-fluid col-12 py-5">
                 <?php
-                if (isset($_GET['a-propos'])) {
+                if (isset($_FILES['image'])) {
+                    insert();
+                }; 
+                if (isset($_GET['supprimer']) || isset($_GET['modifier']))  {
+                    if(!empty(isset($_GET['modifier']))){
+                        $id          = $_GET['modifier'];
+                        $rows        = requestGetOne($id); //request displayOne -> id
+                        $titre       = $rows[0]['img_titre'];
+                        $description = $rows[0]['img_desc'];
+                        displayOne($id,$titre,$description); //display form update
+                        if(isset($_POST['update'])){
+                            $description  = $_POST['description'];
+                            $titre = $_POST['titre'];
+                            modify($id,$titre,$description);
+                            }
+                        }else {
+                            $id=$_GET['supprimer'];
+                            delete($id);
+                            card();
+                        }
+                }
+                elseif (isset($_GET['a-propos'])) {
                     aPropos();
                 } elseif (isset($_GET['contact'])) {
                     contact();
                 } elseif (isset($_GET['login'])) {
-                    login();
+                    loginDisplay();
                 } elseif (isset($_GET["connecter"])) {
                     sendProject();
-                } else { ?>
-                    <div class="col-10 offset-1 py-5">
-                        <div class="row row-cols-1 row-cols-md-2 g-4">
-                            <?php
-                            include("connectBdd.php");
-                            $rows = display();
-                            foreach ($rows  as $key => $row) {
-                                $row['img_blob'] = base64_decode($row['img_blob']) ?>
-                                <div class="col">
-                                    <div class="card text-white mb-3" id="card">
-                                        <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img_blob']); ?>" class="card-img-top" alt="gif">
-                                        <div class="card-body description">
-                                            <h5 class="card-title  col-10 offset-1"><?php echo $row['img_titre']; ?></h5>
-                                            <p class="card-text col-10 offset-1"><?php echo $row['img_desc']; ?></p>
-                                            
-                                        </div>
-                                        <!-- Button trigger modal -->
-                                        <button type="button" class="btn " id="btn-modal" data-toggle="modal" data-target="#message<?php echo $row['img_id']; ?>">Voir mieux ...</button>
-                                        <!-- Modal -->
-                                        <div id="message<?php echo $row['img_id']; ?>" class="modal fade" role="dialog">
-                                            <div class="modal-dialog modal-xl">
-                                                <!-- Modal content-->
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title text-dark"><?php echo $row['img_titre']; ?></h4>
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <p class="text-dark"><?php echo $row['img_desc']; ?></p>
-                                                        <?php echo $row['img_id']; ?>
-                                                        <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img_blob']); ?>" class="card-img-top" alt="gif">
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Modifier</button>
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Delete</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php  } ?>
-                        </div>
-                    </div>
-                <?php };
-                if (isset($_FILES['image'])) {
-                    include('connectBdd.php');
-                    insert();
-                } ?>
+                } else {; 
+                    card();
+                };
+                ?>
             </section>
         </article>
         <div id="scrollUp">
